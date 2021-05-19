@@ -1,13 +1,19 @@
+from itertools import dropwhile
 from logging import Manager
+from time import CLOCK_THREAD_CPUTIME_ID
 import discord
 from discord import client
 from discord import channel
+from discord import user
+from discord import member
+from discord import message
+from discord import guild
 from discord.ext import commands
 from discord.ext.commands.core import has_permissions, has_role
 from requests.api import get
 from discord import DMChannel
 import requests
-import json
+import json 
 import re
 from GoogleNews import GoogleNews
 from bs4.element import ResultSet
@@ -25,7 +31,7 @@ bot.remove_command("help")
 googlenews = GoogleNews()
 googlenews.search('computers')
 
-result = googlenews.gettext()
+resutl = googlenews.gettext()
 
 
 
@@ -63,10 +69,12 @@ async def news(ctx):
 
 
 @bot.command(pass_context=True)
-@commands.has_permissions(administrator=True)
 async def warn(ctx, *, user: discord.Member = None):
-    await ctx.send(f"``▏you have been warned`` {user.mention}")
-    await user.send(f"``▏``you have been warned`` {user.mention}")
+    if ctx.author.guild_permissions.administrator:
+        await ctx.send(f"``▏you have been warned`` {user.mention}")
+        await user.send(f"``▏``you have been warned`` {user.mention}")
+    else:
+        await ctx.send("you dont have permissions to use this command")
 
 # give role 
 @bot.command()
@@ -74,14 +82,28 @@ async def addrole(ctx, role: discord.Role , user: discord.Member):
     if ctx.author.guild_permissions.administrator:
         await user.add_roles(role)  
         await ctx.send(f"▏``Successfully give`` {role.mention} ``Role to`` {user.mention} ")
+    else:
+        await ctx.send("you dont have permissions to use this command")
 
-
+# remove role
 @bot.command()
 async def remove(ctx, role:discord.Role, user: discord.Member):
+    if ctx.author.guild_permissions.administrator:
         await user.remove_roles(role)
         await ctx.send(f"``▏Successfully remove`` {role.mention} ``Role to`` {user.mention}")
+    else:
+        await ctx.send("you dont have permission to use this command")
 
 
+# kick member
+@bot.command()
+async def kick( ctx, user: discord.Member,*, reason=None):
+    if ctx.author.guild_permissions.administrator:
+        await user.kick(reason=reason)
+        await ctx.send(f"{user.mention} has been removed")
+    else: 
+        await ctx.send(f"you dont have permissions to use this command")
+    
 
 #help
 helpvar = [
