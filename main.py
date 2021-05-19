@@ -1,6 +1,3 @@
-from itertools import dropwhile
-from logging import Manager
-from time import CLOCK_THREAD_CPUTIME_ID
 import discord
 from discord import client
 from discord import channel
