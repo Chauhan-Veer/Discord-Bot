@@ -86,7 +86,8 @@ async def remove(ctx, role:discord.Role, user: discord.Member):
 #help
 helpvar = [
     "type !inspire",
-    "type !ping"
+    "type !ping",
+    "type !hello"
 ]
 
 @bot.command()
