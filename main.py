@@ -5,6 +5,7 @@ from discord import user
 from discord import member
 from discord import message
 from discord import guild
+from discord import mentions
 from discord.ext import commands
 from discord.ext.commands.core import has_permissions, has_role
 from requests.api import get
@@ -101,6 +102,8 @@ async def kick( ctx, user: discord.Member,*, reason=None):
     else: 
         await ctx.send(f"you dont have permissions to use this command")
     
+
+
 
 #help
 helpvar = [
