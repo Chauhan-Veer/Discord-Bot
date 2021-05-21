@@ -1,4 +1,3 @@
-from functools import update_wrapper
 import discord
 from discord import client
 from discord import channel
