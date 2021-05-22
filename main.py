@@ -1,25 +1,22 @@
-import discord
-from discord import client
-from discord import channel
-from discord import user
-from discord import member
-from discord import message
-from discord import guild
-from discord import mentions
-from discord.ext import commands
-from discord.ext.commands.core import has_permissions, has_role
-from discord.ext.commands.errors import ExpectedClosingQuoteError
-from requests.api import get
-from discord import DMChannel
-import requests
-import json 
 import re
+import discord
+from discord import reaction
+from discord import user
+from discord import asset
+from discord import message
+from discord import member
+from discord import guild
+from discord import emoji
+from discord import role
+from discord.ext import commands
+from discord.gateway import DiscordVoiceWebSocket
+from discord.role import Role
+import requests
 from GoogleNews import GoogleNews
-from bs4.element import ResultSet
-
-#import libarari 
+from discord import Embed
+#import libarari
 import json
-import os
+
 
 bot = commands.Bot(command_prefix='!')
 
@@ -104,14 +101,27 @@ async def kick( ctx, user: discord.Member,*, reason=None):
         await ctx.send(f"{user.mention} has been removed")
     else: 
         await ctx.send(f"you dont have permissions to use this command")
-    
 
+#self- role
+@bot.event
+async def on_raw_reaction_add(payload):
+    Ourmessageid = 845685655790026783
+
+    if Ourmessageid == payload.message_id:
+        member = payload.member
+        guild = member.guild
+        
+        emoji = payload.emoji.name
+        if emoji == 'programmer':       
+            role = discord.utils.get(guild.roles, name="programmer")
+        await member.add_roles(role)
 
 
 #help
 helpvar = [
     "type !inspire",
     "type !ping",
+    "type !hello"
     "type !hello"
 ]
 
