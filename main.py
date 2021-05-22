@@ -8,6 +8,7 @@ from discord import member
 from discord import guild
 from discord import emoji
 from discord import role
+from discord import embeds
 from discord.ext import commands
 from discord.gateway import DiscordVoiceWebSocket
 from discord.role import Role
@@ -101,6 +102,17 @@ async def kick( ctx, user: discord.Member,*, reason=None):
         await ctx.send(f"{user.mention} has been removed")
     else: 
         await ctx.send(f"you dont have permissions to use this command")
+
+
+@bot.command()
+async def rolemessage(ctx):
+    embed = discord.Embed(
+        title="React to Mesage to get roles",
+        description=":one: - programmer"
+    )
+    msg = await ctx.send(embed=embed)
+    await msg.add_reaction(":one:")
+    # await ctx.message.add_reaction(':programmer:')
 
 #self- role
 @bot.event
