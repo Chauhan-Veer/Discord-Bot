@@ -114,7 +114,11 @@ async def on_raw_reaction_add(payload):
         emoji = payload.emoji.name
         if emoji == 'programmer':       
             role = discord.utils.get(guild.roles, name="programmer")
-        await member.add_roles(role)
+            await member.add_roles(role)
+
+        elif emoji == "python":
+            role = discord.utils.get(guild.roles, name="python")
+            await member.add_roles(role)
 
 
 #help
