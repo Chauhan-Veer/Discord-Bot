@@ -1,21 +1,8 @@
-import re
+
 import discord
-from discord import reaction
-from discord import user
-from discord import asset
-from discord import message
-from discord import member
-from discord import guild
-from discord import emoji
-from discord import role
-from discord import embeds
 from discord.ext import commands
-from discord.gateway import DiscordVoiceWebSocket
-from discord.role import Role
 import requests
 from GoogleNews import GoogleNews
-from discord import Embed
-#import libarari
 import json
 
 
@@ -132,7 +119,36 @@ async def on_raw_reaction_add(payload):
             role = discord.utils.get(guild.roles, name="Web Developer")
             await member.add_roles(role)
         elif emoji == 'graphisdesigner':
+            role = discord.utils.get(guild.roles, name="Graphic designer")
+            await  member.add_roles(role)
+
+
+@bot.event
+async def on_raw_reaction_remove(payload):
+    Ourmessage = 845977291892719636
+
+    if Ourmessage == payload.message_id:
+        guild = await(bot.fetch_guild(payload.guild_id))
+        emoji = payload.emoji.name
+
+        if emoji == 'programmer':
+            role = discord.utils.get(guild.roles, name="Programmer")
+
+        elif emoji == 'python':
+            role = discord.utils.get(guild.roles, name="Python")
+
+        elif emoji == 'webdeveloper':
             role = discord.utils.get(guild.roles, name="Web Developer")
+
+        elif emoji == 'graphisdesigner':
+            role = discord.utils.get(guild.roles, name="Graphic designer")
+
+        member = await(guild.fetch_member(payload.user_id))
+        if member is not None:
+            await member.remove_roles(role)
+        else:
+            print("member not found")
+
 
 
         
