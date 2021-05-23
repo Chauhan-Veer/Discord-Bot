@@ -106,32 +106,37 @@ async def kick( ctx, user: discord.Member,*, reason=None):
 
 @bot.command()
 async def rolemessage(ctx):
-    embed = discord.Embed(
-        title="React to Mesage to get roles",
-        description=":one: - programmer"
-    )
-    msg = await ctx.send(embed=embed)
-    await msg.add_reaction(":one:")
-    # await ctx.message.add_reaction(':programmer:')
+    await ctx.send("Give Yourself a role by reacting to emojis\n:programmer: - Programmer\n:python: - Python\n:webdeveloper: - Web Developer\n:graphisdesigner: - Graphics Designer")
+
 
 #self- role
 @bot.event
 async def on_raw_reaction_add(payload):
-    Ourmessageid = 845685655790026783
+    Ourmessageid = 845977291892719636
 
     if Ourmessageid == payload.message_id:
         member = payload.member
         guild = member.guild
         
         emoji = payload.emoji.name
+
         if emoji == 'programmer':       
-            role = discord.utils.get(guild.roles, name="programmer")
+            role = discord.utils.get(guild.roles, name="Programmer")
             await member.add_roles(role)
-
-        elif emoji == "python":
-            role = discord.utils.get(guild.roles, name="python")
+        
+        elif emoji == 'python':
+            role = discord.utils.get(guild.roles, name= "Python")
             await member.add_roles(role)
+        
+        elif emoji == 'webdeveloper':
+            role = discord.utils.get(guild.roles, name="Web Developer")
+            await member.add_roles(role)
+        elif emoji == 'graphisdesigner':
+            role = discord.utils.get(guild.roles, name="Web Developer")
 
+
+        
+        
 
 #help
 helpvar = [
