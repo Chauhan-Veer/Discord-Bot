@@ -156,9 +156,9 @@ adminco = [
     "type !addrole and (role) name and (mention user)"
 ]
 
-# @bot.command()
-# async def adminco(ctx):
-#     await ctx.send(adminco)
+@bot.command()
+async def adminco(ctx):
+    await ctx.send(adminco)
 
 
 #help
