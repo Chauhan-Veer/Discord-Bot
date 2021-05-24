@@ -154,6 +154,7 @@ async def on_raw_reaction_remove(payload):
 adminco = [
     "type !warn to warn some user",
     "type !addrole and (role) name and (mention user)"
+    "type !remove and (role) name and (mention user)"
 ]
 
 @bot.command()
