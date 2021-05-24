@@ -150,7 +150,16 @@ async def on_raw_reaction_remove(payload):
             print("member not found")
 
 
-#give give automatically
+#give adminco
+adminco = [
+    "type !warn to warn some user",
+    "type !addrole and (role) name and (mention user)"
+]
+
+# @bot.command()
+# async def adminco(ctx):
+#     await ctx.send(adminco)
+
 
 #help
 helpvar = [
