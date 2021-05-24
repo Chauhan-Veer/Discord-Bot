@@ -1,10 +1,10 @@
-
 import discord
+from discord import member
 from discord.ext import commands
+from discord.utils import get
 import requests
 from GoogleNews import GoogleNews
 import json
-
 
 bot = commands.Bot(command_prefix='!')
 
@@ -150,9 +150,7 @@ async def on_raw_reaction_remove(payload):
             print("member not found")
 
 
-
-        
-        
+#give give automatically
 
 #help
 helpvar = [
@@ -160,6 +158,7 @@ helpvar = [
     "type !ping",
     "type !hello"
     "type !hello"
+    "type !news"
 ]
 
 @bot.command()
