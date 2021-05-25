@@ -1,6 +1,9 @@
 import discord
 from discord import member
+from discord import embeds
 from discord.ext import commands
+from discord.ext.commands.converter import EmojiConverter
+from discord.flags import alias_flag_value
 from discord.utils import get
 import requests
 from GoogleNews import GoogleNews
@@ -151,16 +154,13 @@ async def on_raw_reaction_remove(payload):
 
 
 #give adminco
-adminco = [
-    "type !warn to warn some user",
-    "type !addrole and (role) name and (mention user)"
-    "type !remove and (role) name and (mention user)"
-]
+admin =     "Type !warn to warn some user \n \n Type !addrole and (role) name and (mention user)\n \n Type !remove and (role) name and (mention user)"
+
 
 @bot.command()
-async def adminco(ctx):
-    await ctx.send(adminco)
-
+async def admincommands(ctx):
+    embed = discord.Embed(title = "Admin Commands" , description = admin, color= discord.Color.green())
+    await ctx.send(embed=embed)
 
 #help
 helpvar = [
