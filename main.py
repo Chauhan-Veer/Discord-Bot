@@ -79,9 +79,12 @@ async def addrole(ctx, role: discord.Role , user: discord.Member):
 async def remove(ctx, role:discord.Role, user: discord.Member):
     if ctx.author.guild_permissions.administrator:
         await user.remove_roles(role)
-        await ctx.send(f"``▏Successfully remove`` {role.mention} ``Role to`` {user.mention}")
+        embed = discord.Embed(title = "REMOVE", description =f"Successfully remove {role.mention} Role to {user.mention}")
+        await ctx.send(embed=embed)
     else:
-        await ctx.send("you don't have permission to use this command")
+        embed = discord.Embed(title = "REMOVE", description=f" {ctx.author.mention} you don't have permissions to use this command" )
+        await ctx.send(embed=embed)
+        
 
 
 # kick member
