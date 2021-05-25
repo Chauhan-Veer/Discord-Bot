@@ -183,4 +183,4 @@ helpvar = [
 async def help(ctx):
     await ctx.send(helpvar)
 
-bot.run('ODQzNTUwMTk3NTU5NTkwOTMz.YKFfVw.sfK80g0CsLwGyFWGV3p0FX4hl5c')
+bot.run('your bot token')
