@@ -70,9 +70,11 @@ async def warn(ctx, *, user: discord.Member = None):
 async def addrole(ctx, role: discord.Role , user: discord.Member):
     if ctx.author.guild_permissions.administrator:
         await user.add_roles(role)  
-        await ctx.send(f"▏``Successfully give`` {role.mention} ``Role to`` {user.mention} ")
+        embed = discord.Embed(title = "GIVE ROLE", description =f"Successfully give {role.mention} Role to {user.mention} ")
+        await ctx.send(embed=embed)
     else:
-        await ctx.send("you dont have permissions to use this command")
+        embed = discord.Embed(title = "GIVE ROLE", description =f" {ctx.author.mention} you don't have permissions to use this command")
+        await ctx.send(embed=embed)
 
 # remove role
 @bot.command()
