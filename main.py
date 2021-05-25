@@ -81,7 +81,7 @@ async def remove(ctx, role:discord.Role, user: discord.Member):
         await user.remove_roles(role)
         await ctx.send(f"``▏Successfully remove`` {role.mention} ``Role to`` {user.mention}")
     else:
-        await ctx.send("you dont have permission to use this command")
+        await ctx.send("you don't have permission to use this command")
 
 
 # kick member
@@ -89,13 +89,16 @@ async def remove(ctx, role:discord.Role, user: discord.Member):
 async def kick( ctx, user: discord.Member,*, reason=None):
     if ctx.author.guild_permissions.administrator:
         await user.kick(reason=reason)
-        await ctx.send(f"{user.mention} has been removed")
-    else: 
-        await ctx.send(f"you dont have permissions to use this command")
+        embed = discord.Embed(title = "KICK",description = f"{user.mention} has been removed")
+        await ctx.send(embed=embed)
+    else:
+        embed = discord.Embed(title = "KICK", description=f" {ctx.author.mention} you don't have permissions to use this command" )
+        await ctx.send(embed=embed)
 
 
 @bot.command()
 async def rolemessage(ctx):
+    
     await ctx.send("Give Yourself a role by reacting to emojis\n:programmer: - Programmer\n:python: - Python\n:webdeveloper: - Web Developer\n:graphisdesigner: - Graphics Designer")
 
 
