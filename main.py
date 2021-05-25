@@ -110,7 +110,7 @@ async def rolemessage(ctx):
 #self- role
 @bot.event
 async def on_raw_reaction_add(payload):
-    Ourmessageid = 845977291892719636
+    Ourmessageid = (your message channel)
 
     if Ourmessageid == payload.message_id:
         member = payload.member
@@ -136,7 +136,7 @@ async def on_raw_reaction_add(payload):
 
 @bot.event
 async def on_raw_reaction_remove(payload):
-    Ourmessage = 845977291892719636
+    Ourmessage = channel
 
     if Ourmessage == payload.message_id:
         guild = await(bot.fetch_guild(payload.guild_id))
