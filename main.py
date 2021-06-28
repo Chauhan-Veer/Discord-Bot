@@ -38,12 +38,9 @@ async def addrole(ctx, role: discord.Role , user: discord.Member):
     if ctx.author.guild_permissions.administrator:
         await user.add_roles(role)  
         await ctx.send(f" Successfully give {role.mention} Role to {user.mention}")
-        # embed = discord.Embed(title = "GIVE ROLE", description =f"Successfully give {role.mention} Role to {user.mention} ")
-        # await ctx.send(embed=embed)
     else:
         await ctx.send(f"{ctx.author.mention} you don't have permissioms to use this command")
-        # embed = discord.Embed(title = "GIVE ROLE", description =f" {ctx.author.mention} you don't have permissions to use this command")
-        # await ctx.send(embed=embed)
+        
 
 """!removerole (rolename) @mention-user"""
 @bot.command()
@@ -51,12 +48,9 @@ async def removerole(ctx, role:discord.Role, user: discord.Member):
     if ctx.author.guild_permissions.administrator:
         await user.remove_roles(role)
         await ctx.send(f"Successfully remove {role.mention} Role to {user.mention} ")
-        # embed = discord.Embed(title = "REMOVE", description =f"Successfully remove {role.mention} Role to {user.mention}")
-        # await ctx.send(embed=embed)
     else:
         await ctx.send(f"{ctx.author.mention} you don't have permissions to use this command")
-        # embed = discord.Embed(title = "REMOVE", description=f" {ctx.author.mention} you don't have permissions to use this command" )
-        # await ctx.send(embed=embed)
+        
         
 
 
@@ -66,12 +60,9 @@ async def kick( ctx, user: discord.Member,*, reason=None):
     if ctx.author.guild_permissions.administrator:
         await user.kick(reason=reason)
         await ctx.send(f"{user.mention} has been removed")
-        # embed = discord.Embed(title = "KICK",description = f"{user.mention} has been removed")
-        # await ctx.send(embed=embed)
     else:
         await ctx.send(f"{ctx.author.mention} you don't have permissions tp use this command")
-        # embed = discord.Embed(title = "KICK", description=f" {ctx.author.mention} you don't have permissions to use this command" )
-        # await ctx.send(embed=embed)
+        
 
 
 
